@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Chúc Em Yêu 1/6</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        overflow: hidden;
+        background: linear-gradient(to bottom, #000000, #ff69b4);
+        font-family: "Quicksand", sans-serif;
+      }
+
+      .music-button {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background-color: #ff69b4;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 14px;
+        border-radius: 30px;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(255, 105, 180, 0.5);
+        z-index: 100;
+      }
+
+      .message {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: white;
+        z-index: 10;
+        max-width: 700px;
+      }
+
+      .message h1 {
+        font-family: "Pacifico", cursive;
+        font-size: 30px;
+        color: #fff0f5;
+        margin-bottom: 20px;
+        text-shadow: 1px 1px 3px #ff69b4;
+      }
+
+      .message h1 {
+        font-family: "Poppins", sans-serif;
+        font-size: 32px;
+        color: #ffffff;
+        margin-bottom: 20px;
+        text-shadow: 1px 1px 3px #ff69b4;
+      }
+
+      .heart {
+        position: absolute;
+        color: red;
+        animation: fall linear;
+      }
+
+      .text-heart,
+      .text-iuthuoi {
+        position: absolute;
+        color: white;
+        font-weight: bold;
+        animation: fall linear;
+        opacity: 0.8;
+      }
+
+      .text-iuthuoi {
+        font-style: italic;
+      }
+
+      @keyframes fall {
+        0% {
+          top: -10%;
+          opacity: 0;
+        }
+        100% {
+          top: 100%;
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Nút nhạc -->
+    <button id="playMusicButton" class="music-button">
+      nhạc lên nè babyy 🎵
+    </button>
+
+    <!-- Nhạc nền -->
+    <audio id="bg-music" autoplay loop>
+      <source src="./iuemm.mp3" type="audio/mpeg" />
+    </audio>
+
+    <!-- Nội dung lời nhắn -->
+    <div class="message">
+      <h1>Chúc em, ngày 1/6 thật hạnh phúc nha bepp 💖</h1>
+      <p>
+        Cảm ơn em… Vì đã ở bên anh khi anh yếu đuối nhất, vì đã không rời đi khi
+        mọi thứ quanh anh dường như sụp đổ. Em là điều tuyệt vời nhất từng đến
+        trong cuộc đời anh. Dù sau này ra sao, anh vẫn luôn trân trọng và biết
+        ơn em thật nhiều.
+      </p>
+    </div>
+
+    <script>
+      // Phát nhạc khi nhấn
+      document
+        .getElementById("playMusicButton")
+        .addEventListener("click", function () {
+          document.getElementById("bg-music").play();
+        });
+
+      // Tim rơi
+      function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.textContent = "💗";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = 2 + Math.random() * 3 + "s";
+        heart.style.fontSize = 16 + Math.random() * 16 + "px";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 5000);
+      }
+
+      // Chữ "yêu emm" rơi
+      function createTextHearts() {
+        const count = 5;
+        for (let i = 0; i < count; i++) {
+          const textHeart = document.createElement("div");
+          textHeart.classList.add("text-heart");
+          textHeart.textContent = "yêu emm";
+          textHeart.style.left = 20 + Math.random() * 60 + "vw";
+          textHeart.style.animationDuration = 3 + Math.random() * 2 + "s";
+          document.body.appendChild(textHeart);
+          setTimeout(() => textHeart.remove(), 5000);
+        }
+      }
+
+      // Chữ "iu thúi" rơi nghiêng
+      function createTextIuThuoi() {
+        const count = 3;
+        for (let i = 0; i < count; i++) {
+          const textIu = document.createElement("div");
+          textIu.classList.add("text-iuthuoi");
+          textIu.textContent = "iu thúi";
+          textIu.style.left = 10 + Math.random() * 80 + "vw";
+          textIu.style.animationDuration = 3 + Math.random() * 2 + "s";
+          textIu.style.top = "-2em";
+          document.body.appendChild(textIu);
+          setTimeout(() => textIu.remove(), 5000);
+        }
+      }
+
+      // Lặp hiệu ứng
+      setInterval(createHeart, 200);
+      setInterval(createTextHearts, 2000);
+      setInterval(createTextIuThuoi, 2500);
+    </script>
+  </body>
+</html>
